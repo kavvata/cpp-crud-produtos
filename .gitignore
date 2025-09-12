@@ -1,0 +1,7 @@
+# Idea-related stuff
+.idea/*
+# Prevent code style from being ignored.
+# I prefer older style with ampersand and asterisk near variable name.
+!.idea/codeStyles/
+# CMake
+*build*/
