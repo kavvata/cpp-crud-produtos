@@ -2,8 +2,8 @@
 #include <QTranslator>
 #include <helpers.hpp>
 
-#include "example/mainwindow.hpp"
-#include "example/texteditorsettings.hpp"
+#include "produtos/mainwindow.hpp"
+#include "produtos/texteditorsettings.hpp"
 
 #include <QDateTime>
 #include <QFile>

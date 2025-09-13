@@ -3,6 +3,7 @@
 
 #include <utilitymainwindow.hpp>
 
+#include "oimae.hpp"
 #include "texteditor.hpp"
 
 /**
@@ -47,8 +48,9 @@ class MainWindow : public UtilityMainWindow {
 
   private:
     TextEditor* textEditor;  // <- This is your widget.
+    OiMae* oiMae;
 
-    void nop(){};
+    void nop() {};
 };
 
 #endif  // UTILITY_BOILERPLATE_QT_MAINWINDOW_HPP
