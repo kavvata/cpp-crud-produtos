@@ -12,8 +12,8 @@ MainWindow::MainWindow(QWidget* parent) : UtilityMainWindow(parent) {
     QMainWindow::setWindowIcon(QIcon(":/app/icon"));
     // Init UI.
     textEditor = new TextEditor();
-    oiMae = new OiMae();
-    getLayout()->addWidget(oiMae);
+    loginForm = new LoginForm();
+    getLayout()->addWidget(loginForm);
 }
 
 void MainWindow::loadFile(const QString& fileName) {

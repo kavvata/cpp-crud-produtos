@@ -3,7 +3,7 @@
 
 #include <utilitymainwindow.hpp>
 
-#include "oimae.hpp"
+#include "loginform.hpp"
 #include "texteditor.hpp"
 
 /**
@@ -48,7 +48,7 @@ class MainWindow : public UtilityMainWindow {
 
   private:
     TextEditor* textEditor;
-    OiMae* oiMae;
+    LoginForm* loginForm;
 
     void nop() {};
 };
