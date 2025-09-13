@@ -6,3 +6,6 @@
 # CMake
 *build*/
 .cache
+CMakeFiles/
+CMakeCache.txt
+CMakeLists.txt.user
