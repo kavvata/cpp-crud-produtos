@@ -1,16 +1,22 @@
 #ifndef LOGINFORM_HPP
 #define LOGINFORM_HPP
 
-#include <QDialog>
+#include <QWidget>
 
 #include "ui_loginform.h"
 
-class LoginForm : public QDialog {
+class LoginForm : public QWidget {
     Q_OBJECT
 
   public:
     explicit LoginForm(QWidget *parent = nullptr);
     ~LoginForm();
+
+  signals:
+    void loginSucesso();
+
+  public slots:
+    void handleLogin();
 
   private:
     Ui::LoginForm *ui;
