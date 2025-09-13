@@ -47,7 +47,7 @@ class MainWindow : public UtilityMainWindow {
     void paste() override;
 
   private:
-    TextEditor* textEditor;  // <- This is your widget.
+    TextEditor* textEditor;
     OiMae* oiMae;
 
     void nop() {};

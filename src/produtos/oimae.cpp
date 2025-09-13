@@ -1,4 +1,4 @@
-#include "oimae.h"
+#include "oimae.hpp"
 #include "ui_oimae.h"
 
 OiMae::OiMae(QWidget *parent) : QDialog(parent), ui(new Ui::OiMae) { ui->setupUi(this); }

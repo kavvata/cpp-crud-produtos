@@ -3,9 +3,7 @@
 
 #include <QDialog>
 
-namespace Ui {
-    class OiMae;
-}
+#include "ui_oimae.h"
 
 class OiMae : public QDialog {
     Q_OBJECT
