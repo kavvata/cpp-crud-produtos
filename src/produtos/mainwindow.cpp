@@ -5,7 +5,6 @@
 #include <QSaveFile>
 #include <QTextStream>
 #include <debug_new>
-#include "loginform.hpp"
 #include "texteditorsettings.hpp"
 
 MainWindow::MainWindow(QWidget* parent) : UtilityMainWindow(parent) {
@@ -14,10 +13,11 @@ MainWindow::MainWindow(QWidget* parent) : UtilityMainWindow(parent) {
     // Init UI.
     textEditor = new TextEditor();
     loginForm = new LoginForm();
+    listWidget = new ListWidget();
     getLayout()->addWidget(loginForm);
     connect(loginForm, &LoginForm::loginSucesso, this, [&] {
         getLayout()->removeWidget(loginForm);
-        getLayout()->addWidget(textEditor);
+        getLayout()->addWidget(listWidget);
     });
 }
 

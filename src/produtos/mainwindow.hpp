@@ -3,6 +3,7 @@
 
 #include <utilitymainwindow.hpp>
 
+#include "listwidget.hpp"
 #include "loginform.hpp"
 #include "texteditor.hpp"
 
@@ -49,6 +50,7 @@ class MainWindow : public UtilityMainWindow {
   private:
     TextEditor* textEditor;
     LoginForm* loginForm;
+    ListWidget* listWidget;
 
     void nop() {};
 };
