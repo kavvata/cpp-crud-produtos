@@ -40,6 +40,9 @@
    </item>
    <item>
     <widget class="QTableWidget" name="produtosTableWidget_">
+     <property name="editTriggers">
+      <set>QAbstractItemView::EditTrigger::NoEditTriggers</set>
+     </property>
      <property name="sortingEnabled">
       <bool>true</bool>
      </property>

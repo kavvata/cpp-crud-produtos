@@ -5,6 +5,7 @@
 #include <qtablewidget.h>
 #include <QWidget>
 
+#include "repositories/iprodutorepository.hpp"
 #include "ui_listwidget.h"
 
 class ListWidget : public QWidget {
@@ -22,6 +23,8 @@ class ListWidget : public QWidget {
   private:
     Ui::ListWidget *ui;
     int *produto_id;
+    IProdutoRepository *repo_;
+    void atualizarTabela();
 };
 
 #endif  // LISTWIDGET_HPP
