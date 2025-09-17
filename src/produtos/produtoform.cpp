@@ -19,6 +19,8 @@ ProdutoForm::ProdutoForm(QWidget* parent, Produto* produto)
     connect(ui->salvarPushButton_, &QPushButton::clicked, this, &ProdutoForm::salvar);
     connect(ui->voltarPushButton_, &QPushButton::clicked, this, &ProdutoForm::voltar);
 
+    connect(ui->removerPushButton_, &QPushButton::clicked, this, &ProdutoForm::remover);
+
     std::vector<UnidadeMedida> unidadesMedida = this->unidadeMedidaRepo->listarTodos();
 
     for (const UnidadeMedida it : unidadesMedida) {
@@ -36,6 +38,8 @@ ProdutoForm::ProdutoForm(QWidget* parent, Produto* produto)
         if (index != -1) {
             ui->unidadeMedidacomboBox_->setCurrentIndex(index);
         }
+    } else {
+        ui->removerPushButton_->hide();
     }
 }
 
@@ -71,3 +75,14 @@ void ProdutoForm::salvar() {
 }
 
 void ProdutoForm::voltar() { emit voltarListWidget(); }
+
+void ProdutoForm::remover() {
+    if (!this->instance) {
+        QMessageBox::critical(this, "Erro", "Erro ao remover: instância não localizada.");
+        return;
+    }
+
+    this->repo->remover(*this->instance);
+    QMessageBox::information(this, "Sucesso", "Produto removido com sucesso.");
+    emit voltarListWidget();
+}

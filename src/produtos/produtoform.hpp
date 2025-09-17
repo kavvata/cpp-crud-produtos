@@ -20,6 +20,7 @@ class ProdutoForm : public QWidget {
   public slots:
     void salvar();
     void voltar();
+    void remover();
 
   private:
     Ui::ProdutoForm* ui;
