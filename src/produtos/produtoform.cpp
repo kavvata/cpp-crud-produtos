@@ -48,15 +48,15 @@ ProdutoForm::~ProdutoForm() { delete ui; }
 void ProdutoForm::salvar() {
     Produto* retorno = nullptr;
     if (this->instance) {
-        Produto novo(this->instance->codigo,
-                     ui->nomeLineEdit_->text().toStdString(),
-                     ui->precoDoubleSpinBox_->value(),
-                     ui->quantidadeSpinBox_->value(),
-                     this->instance->unidadeMedida);
+        Produto* novo = new Produto(this->instance->codigo,
+                                    ui->nomeLineEdit_->text().toStdString(),
+                                    ui->precoDoubleSpinBox_->value(),
+                                    ui->quantidadeSpinBox_->value(),
+                                    this->instance->unidadeMedida);
 
         int unId = ui->unidadeMedidacomboBox_->currentData().toInt();
-        novo.unidadeMedida = *this->unidadeMedidaRepo->buscar(unId);
-        retorno = this->repo->editar(novo);
+        novo->unidadeMedida = *this->unidadeMedidaRepo->buscar(unId);
+        retorno = this->repo->editar(*novo);
     } else {
         Produto* novo = new Produto(ui->nomeLineEdit_->text().toStdString(),
                                     ui->precoDoubleSpinBox_->value(),
