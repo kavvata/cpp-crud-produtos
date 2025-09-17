@@ -5,6 +5,7 @@
 #include <qtablewidget.h>
 #include <QWidget>
 
+#include "entities/produto.hpp"
 #include "repositories/iprodutorepository.hpp"
 #include "ui_listwidget.h"
 
@@ -16,7 +17,7 @@ class ListWidget : public QWidget {
     ~ListWidget();
 
   signals:
-    void mostrarFormularioProduto();
+    void mostrarFormularioProduto(Produto *produto = nullptr);
 
   public slots:
     void criarProduto();

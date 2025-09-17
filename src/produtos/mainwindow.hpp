@@ -4,6 +4,7 @@
 #include <qwidget.h>
 #include <utilitymainwindow.hpp>
 
+#include "entities/produto.hpp"
 #include "listwidget.hpp"
 #include "loginform.hpp"
 #include "produtoform.hpp"
@@ -57,6 +58,7 @@ class MainWindow : public UtilityMainWindow {
     ListWidget* listWidget;
     ProdutoForm* produtoForm;
     void nop() {};
+    QWidget* remontarFormulario(Produto* p);
 };
 
 #endif  // UTILITY_BOILERPLATE_QT_MAINWINDOW_HPP

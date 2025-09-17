@@ -23,13 +23,23 @@ MainWindow::MainWindow(QWidget* parent) : UtilityMainWindow(parent) {
 
     connect(loginForm, &LoginForm::loginSucesso, this, [&] { navegar(loginForm, listWidget); });
 
-    connect(listWidget, &ListWidget::mostrarFormularioProduto, this, [&] {
-        navegar(listWidget, produtoForm);
+    connect(listWidget, &ListWidget::mostrarFormularioProduto, this, [&](Produto* p) {
+        navegar(listWidget, remontarFormulario(p));
     });
 
     connect(produtoForm, &ProdutoForm::voltarListWidget, this, [&] {
         navegar(produtoForm, listWidget);
     });
+}
+
+QWidget* MainWindow::remontarFormulario(Produto* p) {
+    produtoForm = new ProdutoForm(nullptr, p);
+
+    connect(produtoForm, &ProdutoForm::voltarListWidget, this, [&] {
+        navegar(produtoForm, listWidget);
+    });
+
+    return produtoForm;
 }
 
 void MainWindow::navegar(QWidget* de, QWidget* para) {
