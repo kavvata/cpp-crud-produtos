@@ -11,7 +11,7 @@ class ProdutoForm : public QWidget {
     Q_OBJECT
 
   public:
-    explicit ProdutoForm(QWidget *parent = nullptr, Produto *produto = nullptr);
+    explicit ProdutoForm(QWidget* parent = nullptr, Produto* produto = nullptr);
     ~ProdutoForm();
 
   signals:
@@ -22,9 +22,10 @@ class ProdutoForm : public QWidget {
     void voltar();
 
   private:
-    Ui::ProdutoForm *ui;
-    IProdutoRepository *repo;
-    IUnidadeMedidaRepository *unidadeMedidaRepo;
+    Ui::ProdutoForm* ui;
+    IProdutoRepository* repo;
+    IUnidadeMedidaRepository* unidadeMedidaRepo;
+    Produto* instance = nullptr;
 };
 
 #endif  // PRODUTOFORM_HPP
