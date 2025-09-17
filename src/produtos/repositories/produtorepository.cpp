@@ -19,6 +19,12 @@ InMemoryProdutoRepository::InMemoryProdutoRepository() : produtos_{}, proximoCod
 
 std::vector<Produto> InMemoryProdutoRepository::listarTodos() { return produtos_; }
 
+Produto* InMemoryProdutoRepository::buscar(int id) {
+    auto it = std::find_if(
+        produtos_.begin(), produtos_.end(), [id](Produto& p) { return p.codigo == id; });
+
+    return it != produtos_.end() ? &(*it) : nullptr;
+}
 std::vector<Produto> InMemoryProdutoRepository::cadastrar(Produto novoProduto) {
     if (novoProduto.codigo == Produto::SEM_CODIGO) {
         novoProduto.codigo = proximoCodigo_++;
