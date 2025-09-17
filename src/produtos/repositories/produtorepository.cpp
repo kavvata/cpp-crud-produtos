@@ -25,15 +25,15 @@ Produto* InMemoryProdutoRepository::buscar(int id) {
 
     return it != produtos_.end() ? &(*it) : nullptr;
 }
-std::vector<Produto> InMemoryProdutoRepository::cadastrar(Produto novoProduto) {
+Produto* InMemoryProdutoRepository::cadastrar(Produto novoProduto) {
     if (novoProduto.codigo == Produto::SEM_CODIGO) {
         novoProduto.codigo = proximoCodigo_++;
     }
     produtos_.push_back(novoProduto);
-    return produtos_;
+    return &produtos_.back();
 }
 
-std::vector<Produto> InMemoryProdutoRepository::editar(Produto produto) {
+Produto* InMemoryProdutoRepository::editar(Produto produto) {
     auto it = std::find_if(produtos_.begin(), produtos_.end(), [&](const Produto& p) {
         return p.codigo == produto.codigo;
     });
@@ -41,13 +41,14 @@ std::vector<Produto> InMemoryProdutoRepository::editar(Produto produto) {
     if (it != produtos_.end()) {
         *it = produto;
     }
-    return produtos_;
+    return it != produtos_.end() ? &(*it) : nullptr;
 }
 
-std::vector<Produto> InMemoryProdutoRepository::remover(Produto produto) {
-    produtos_.erase(std::remove_if(produtos_.begin(),
-                                   produtos_.end(),
-                                   [&](const Produto& p) { return p.codigo == produto.codigo; }),
-                    produtos_.end());
-    return produtos_;
+bool InMemoryProdutoRepository::remover(Produto produto) {
+    auto it = produtos_.erase(
+        std::remove_if(produtos_.begin(),
+                       produtos_.end(),
+                       [&](const Produto& p) { return p.codigo == produto.codigo; }),
+        produtos_.end());
+    return it != produtos_.end() ? true : false;
 }

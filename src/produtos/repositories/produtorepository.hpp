@@ -8,9 +8,9 @@ class InMemoryProdutoRepository : public IProdutoRepository {
     InMemoryProdutoRepository();
     std::vector<Produto> listarTodos();
     Produto* buscar(int id);
-    std::vector<Produto> cadastrar(Produto novoProduto);
-    std::vector<Produto> editar(Produto produto);
-    std::vector<Produto> remover(Produto produto);
+    Produto* cadastrar(Produto novoProduto);
+    Produto* editar(Produto produto);
+    bool remover(Produto produto);
 
   private:
     std::vector<Produto> produtos_;

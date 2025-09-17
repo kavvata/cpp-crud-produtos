@@ -9,9 +9,9 @@ class IProdutoRepository {
     virtual ~IProdutoRepository() = default;
     virtual std::vector<Produto> listarTodos() = 0;
     virtual Produto* buscar(int id) = 0;
-    virtual std::vector<Produto> cadastrar(Produto novoProduto) = 0;
-    virtual std::vector<Produto> editar(Produto produto) = 0;
-    virtual std::vector<Produto> remover(Produto produto) = 0;
+    virtual Produto* cadastrar(Produto novoProduto) = 0;
+    virtual Produto* editar(Produto produto) = 0;
+    virtual bool remover(Produto produto) = 0;
 };
 
 #endif  // !IPRODUTOREPOSITORY_HPP
