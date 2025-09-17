@@ -1,10 +1,12 @@
 #ifndef UTILITY_BOILERPLATE_QT_MAINWINDOW_HPP
 #define UTILITY_BOILERPLATE_QT_MAINWINDOW_HPP
 
+#include <qwidget.h>
 #include <utilitymainwindow.hpp>
 
 #include "listwidget.hpp"
 #include "loginform.hpp"
+#include "produtoform.hpp"
 #include "texteditor.hpp"
 
 /**
@@ -37,6 +39,8 @@ class MainWindow : public UtilityMainWindow {
 
     void showSettings() override;
 
+    void navegar(QWidget* de, QWidget* para);
+
   protected slots:
 
     void createEditActions(QMenu* menu, QToolBar* toolbar) override;
@@ -51,7 +55,7 @@ class MainWindow : public UtilityMainWindow {
     TextEditor* textEditor;
     LoginForm* loginForm;
     ListWidget* listWidget;
-
+    ProdutoForm* produtoForm;
     void nop() {};
 };
 

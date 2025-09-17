@@ -15,10 +15,12 @@ class ListWidget : public QWidget {
     explicit ListWidget(QWidget *parent = nullptr);
     ~ListWidget();
 
+  signals:
+    void mostrarFormularioProduto();
+
   public slots:
     void criarProduto();
     void editarProduto(QTableWidgetItem *item);
-    void selecionarProduto();
 
   private:
     Ui::ListWidget *ui;

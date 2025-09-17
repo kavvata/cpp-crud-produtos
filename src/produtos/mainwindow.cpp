@@ -1,10 +1,13 @@
 #include "mainwindow.hpp"
+#include <qwidget.h>
 
 #include <QDir>
 #include <QMessageBox>
 #include <QSaveFile>
 #include <QTextStream>
 #include <debug_new>
+#include "listwidget.hpp"
+#include "produtoform.hpp"
 #include "texteditorsettings.hpp"
 
 MainWindow::MainWindow(QWidget* parent) : UtilityMainWindow(parent) {
@@ -14,11 +17,34 @@ MainWindow::MainWindow(QWidget* parent) : UtilityMainWindow(parent) {
     textEditor = new TextEditor();
     loginForm = new LoginForm();
     listWidget = new ListWidget();
+    produtoForm = new ProdutoForm();
+
     getLayout()->addWidget(loginForm);
-    connect(loginForm, &LoginForm::loginSucesso, this, [&] {
-        getLayout()->removeWidget(loginForm);
-        getLayout()->addWidget(listWidget);
+
+    connect(loginForm, &LoginForm::loginSucesso, this, [&] { navegar(loginForm, listWidget); });
+
+    connect(listWidget, &ListWidget::mostrarFormularioProduto, this, [&] {
+        navegar(listWidget, produtoForm);
     });
+
+    connect(produtoForm, &ProdutoForm::voltarListWidget, this, [&] {
+        navegar(produtoForm, listWidget);
+    });
+}
+
+void MainWindow::navegar(QWidget* de, QWidget* para) {
+    if (de == para) {
+        return;
+    }
+
+    if (!de->isHidden()) {
+        de->hide();
+    }
+    getLayout()->replaceWidget(de, para);
+
+    if (para->isHidden()) {
+        para->show();
+    }
 }
 
 void MainWindow::loadFile(const QString& fileName) {

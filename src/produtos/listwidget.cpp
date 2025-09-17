@@ -39,17 +39,9 @@ void ListWidget::atualizarTabela() {
     }
 }
 
-void ListWidget::criarProduto() {
-    QMessageBox::warning(this, "Novo Produto", "TODO: Não Implementado.");
-    atualizarTabela();
-}
+void ListWidget::criarProduto() { emit mostrarFormularioProduto(); }
 
 void ListWidget::editarProduto(QTableWidgetItem *item) {
     QMessageBox::warning(this, "Editar Produto", "TODO: Não Implementado.");
-    atualizarTabela();
-}
-
-void ListWidget::selecionarProduto() {
-    QMessageBox::warning(this, "Selecionar Produto", "TODO: Não Implementado.");
     atualizarTabela();
 }

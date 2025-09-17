@@ -11,6 +11,9 @@ class ProdutoForm : public QWidget {
     explicit ProdutoForm(QWidget *parent = nullptr);
     ~ProdutoForm();
 
+  signals:
+    void voltarListWidget();
+
   public slots:
     void salvar();
     void voltar();

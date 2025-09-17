@@ -12,4 +12,4 @@ ProdutoForm::~ProdutoForm() { delete ui; }
 
 void ProdutoForm::salvar() { QMessageBox::warning(this, "Salvar", "TODO: Não Implementado."); }
 
-void ProdutoForm::voltar() { QMessageBox::warning(this, "Voltar", "TODO: Não Implementado."); }
+void ProdutoForm::voltar() { emit voltarListWidget(); }
