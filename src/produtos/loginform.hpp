@@ -9,7 +9,7 @@ class LoginForm : public QWidget {
     Q_OBJECT
 
   public:
-    explicit LoginForm(QWidget *parent = nullptr);
+    explicit LoginForm(QWidget* parent = nullptr);
     ~LoginForm();
 
   signals:
@@ -19,7 +19,7 @@ class LoginForm : public QWidget {
     void handleLogin();
 
   private:
-    Ui::LoginForm *ui;
+    Ui::LoginForm* ui;
 };
 
 #endif  // LOGINFORM_HPP
