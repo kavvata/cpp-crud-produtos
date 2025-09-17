@@ -24,18 +24,20 @@ MainWindow::MainWindow(QWidget* parent) : UtilityMainWindow(parent) {
     connect(loginForm, &LoginForm::loginSucesso, this, [&] { navegar(loginForm, listWidget); });
 
     connect(listWidget, &ListWidget::mostrarFormularioProduto, this, [&](Produto* p) {
-        navegar(listWidget, remontarFormulario(p));
+        navegar(listWidget, montarFormulario(p));
     });
 
     connect(produtoForm, &ProdutoForm::voltarListWidget, this, [&] {
+        listWidget->atualizarTabela();
         navegar(produtoForm, listWidget);
     });
 }
 
-QWidget* MainWindow::remontarFormulario(Produto* p) {
+QWidget* MainWindow::montarFormulario(Produto* p) {
     produtoForm = new ProdutoForm(nullptr, p);
 
     connect(produtoForm, &ProdutoForm::voltarListWidget, this, [&] {
+        listWidget->atualizarTabela();
         navegar(produtoForm, listWidget);
     });
 

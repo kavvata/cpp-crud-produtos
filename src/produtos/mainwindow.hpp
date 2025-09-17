@@ -58,7 +58,7 @@ class MainWindow : public UtilityMainWindow {
     ListWidget* listWidget;
     ProdutoForm* produtoForm;
     void nop() {};
-    QWidget* remontarFormulario(Produto* p);
+    QWidget* montarFormulario(Produto* p);
 };
 
 #endif  // UTILITY_BOILERPLATE_QT_MAINWINDOW_HPP
