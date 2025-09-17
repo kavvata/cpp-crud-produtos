@@ -1,4 +1,6 @@
 #include "produtorepository.hpp"
+#include <qchar.h>
+#include <qglobal.h>
 #include <algorithm>
 
 InMemoryProdutoRepository::InMemoryProdutoRepository() : produtos_{}, proximoCodigo_{1} {
@@ -17,20 +19,28 @@ InMemoryProdutoRepository::InMemoryProdutoRepository() : produtos_{}, proximoCod
     cadastrar(Produto(Produto::SEM_CODIGO, "Ovos", 14.00, 30, unidade));
 }
 
-std::vector<Produto> InMemoryProdutoRepository::listarTodos() { return produtos_; }
+InMemoryProdutoRepository& InMemoryProdutoRepository::instance() {
+    static InMemoryProdutoRepository instance;
+    return instance;
+}
+
+std::vector<Produto> InMemoryProdutoRepository::listarTodos() {
+    return produtos_;  // copies
+}
 
 Produto* InMemoryProdutoRepository::buscar(int id) {
     auto it = std::find_if(
         produtos_.begin(), produtos_.end(), [id](Produto& p) { return p.codigo == id; });
 
-    return it != produtos_.end() ? &(*it) : nullptr;
+    return it != produtos_.end() ? new Produto(*it) : nullptr;
 }
+
 Produto* InMemoryProdutoRepository::cadastrar(Produto novoProduto) {
     if (novoProduto.codigo == Produto::SEM_CODIGO) {
         novoProduto.codigo = proximoCodigo_++;
     }
     produtos_.push_back(novoProduto);
-    return &produtos_.back();
+    return new Produto(produtos_.back());
 }
 
 Produto* InMemoryProdutoRepository::editar(Produto produto) {
@@ -40,15 +50,17 @@ Produto* InMemoryProdutoRepository::editar(Produto produto) {
 
     if (it != produtos_.end()) {
         *it = produto;
+        return new Produto(*it);
     }
-    return it != produtos_.end() ? &(*it) : nullptr;
+    return nullptr;
 }
 
 bool InMemoryProdutoRepository::remover(Produto produto) {
-    auto it = produtos_.erase(
-        std::remove_if(produtos_.begin(),
-                       produtos_.end(),
-                       [&](const Produto& p) { return p.codigo == produto.codigo; }),
-        produtos_.end());
-    return it != produtos_.end() ? true : false;
+    auto it = std::remove_if(produtos_.begin(), produtos_.end(), [&](const Produto& p) {
+        return p.codigo == produto.codigo;
+    });
+
+    bool removed = it != produtos_.end();
+    produtos_.erase(it, produtos_.end());
+    return removed;
 }

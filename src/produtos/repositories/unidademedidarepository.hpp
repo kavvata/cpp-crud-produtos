@@ -7,6 +7,7 @@ class InMemoryUnidadeMedidaRepository : public IUnidadeMedidaRepository {
   public:
     InMemoryUnidadeMedidaRepository();
     std::vector<UnidadeMedida> listarTodos();
+    UnidadeMedida* buscar(int id);
 
   private:
     std::vector<UnidadeMedida> unidademedidas_;

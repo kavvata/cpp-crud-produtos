@@ -7,6 +7,7 @@
 class IUnidadeMedidaRepository {
   public:
     virtual ~IUnidadeMedidaRepository() = default;
+    virtual UnidadeMedida* buscar(int id) = 0;
     virtual std::vector<UnidadeMedida> listarTodos() = 0;
 };
 

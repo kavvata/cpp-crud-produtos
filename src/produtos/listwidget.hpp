@@ -13,21 +13,21 @@ class ListWidget : public QWidget {
     Q_OBJECT
 
   public:
-    explicit ListWidget(QWidget *parent = nullptr);
+    explicit ListWidget(QWidget* parent = nullptr);
     ~ListWidget();
 
   signals:
-    void mostrarFormularioProduto(Produto *produto = nullptr);
+    void mostrarFormularioProduto(Produto* produto = nullptr);
 
   public slots:
     void criarProduto();
-    void editarProduto(QTableWidgetItem *item);
+    void editarProduto(QTableWidgetItem* item);
+    void atualizarTabela();
 
   private:
-    Ui::ListWidget *ui;
-    int *produto_id;
-    IProdutoRepository *repo_;
-    void atualizarTabela();
+    Ui::ListWidget* ui;
+    int* produto_id;
+    IProdutoRepository* repo_;
 };
 
 #endif  // LISTWIDGET_HPP

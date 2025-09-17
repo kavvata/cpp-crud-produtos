@@ -4,7 +4,7 @@
 #include <qtablewidget.h>
 #include "repositories/produtorepository.hpp"
 
-ListWidget::ListWidget(QWidget *parent) : QWidget(parent), ui(new Ui::ListWidget) {
+ListWidget::ListWidget(QWidget* parent) : QWidget(parent), ui(new Ui::ListWidget) {
     ui->setupUi(this);
     connect(ui->novoProdutoPushButton_, &QPushButton::clicked, this, &ListWidget::criarProduto);
     connect(ui->produtosTableWidget_,
@@ -12,7 +12,7 @@ ListWidget::ListWidget(QWidget *parent) : QWidget(parent), ui(new Ui::ListWidget
             this,
             &ListWidget::editarProduto);
 
-    this->repo_ = new InMemoryProdutoRepository();
+    this->repo_ = &InMemoryProdutoRepository::instance();
 
     atualizarTabela();
 }
@@ -25,7 +25,7 @@ void ListWidget::atualizarTabela() {
     ui->produtosTableWidget_->setRowCount(static_cast<int>(produtos.size()));
 
     for (int row = 0; row < produtos.size(); ++row) {
-        const auto &p = produtos[row];
+        const auto& p = produtos[row];
 
         ui->produtosTableWidget_->setItem(row, 0, new QTableWidgetItem(QString::number(p.codigo)));
         ui->produtosTableWidget_->setItem(
@@ -41,14 +41,14 @@ void ListWidget::atualizarTabela() {
 
 void ListWidget::criarProduto() { emit mostrarFormularioProduto(); }
 
-void ListWidget::editarProduto(QTableWidgetItem *item) {
+void ListWidget::editarProduto(QTableWidgetItem* item) {
     int row = item->row();
-    QTableWidgetItem *idCell = ui->produtosTableWidget_->item(row, 0);
+    QTableWidgetItem* idCell = ui->produtosTableWidget_->item(row, 0);
     if (!idCell) return;
 
     int id = idCell->text().toInt();
 
-    Produto *p = this->repo_->buscar(id);
+    Produto* p = this->repo_->buscar(id);
 
     emit mostrarFormularioProduto(p);
 }

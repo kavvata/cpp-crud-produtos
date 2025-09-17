@@ -1,4 +1,5 @@
 #include "unidademedidarepository.hpp"
+#include <algorithm>
 
 InMemoryUnidadeMedidaRepository::InMemoryUnidadeMedidaRepository()
     : unidademedidas_{}, proximoCodigo_{1} {
@@ -12,4 +13,12 @@ InMemoryUnidadeMedidaRepository::InMemoryUnidadeMedidaRepository()
 
 std::vector<UnidadeMedida> InMemoryUnidadeMedidaRepository::listarTodos() {
     return unidademedidas_;
+}
+
+UnidadeMedida* InMemoryUnidadeMedidaRepository::buscar(int id) {
+    auto it = std::find_if(unidademedidas_.begin(), unidademedidas_.end(), [id](UnidadeMedida& p) {
+        return p.codigo == id;
+    });
+
+    return it != unidademedidas_.end() ? new UnidadeMedida(*it) : nullptr;
 }
