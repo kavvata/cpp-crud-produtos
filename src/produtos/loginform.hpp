@@ -17,6 +17,7 @@ class LoginForm : public QWidget {
 
   public slots:
     void handleLogin();
+    void focarSenha();
 
   private:
     Ui::LoginForm* ui;
