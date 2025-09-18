@@ -1,9 +1,11 @@
+#include <qglobal.h>
 #include <QApplication>
+#include <QDebug>
 #include <QTranslator>
 #include <helpers.hpp>
 
 #include "produtos/mainwindow.hpp"
-#include "produtos/texteditorsettings.hpp"
+#include "produtos/produtosettings.hpp"
 
 #include <QDateTime>
 #include <QFile>
@@ -49,7 +51,7 @@ extern "C" bool leak_whitelist_callback(char const* file, int line, void* addr, 
  * Initialized and load application settings.
  */
 void readSettings() {
-    Settings* settings = new TextEditorSettings();
+    Settings* settings = new ProdutoSettings();
     // Init defaults if not set.
     settings->initDefaults();
     // Set style from settings.
@@ -82,9 +84,6 @@ int main(int argc, char* argv[]) {
     MainWindow mainWin;
     // Check command line arguments for file to open.
     QStringList arguments = ub_helpers::parseFirstArgumentAsFile(app);
-    if (!arguments.isEmpty()) {
-        mainWin.loadFile(arguments.first());
-    }
     // Display window and run application.
     mainWin.show();
     int result;

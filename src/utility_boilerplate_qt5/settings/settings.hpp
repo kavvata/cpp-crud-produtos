@@ -161,7 +161,7 @@ class Settings : public QSettings {
     /**
      * Override this method to add you application setting.
      */
-    virtual void createUserSettings(){};
+    virtual void createUserSettings() {};
 
     /**
      * Tag of INI file section where settings from _items stored.

@@ -16,6 +16,8 @@
 #include <QWindow>
 #include <debug_new>
 
+#define QT_NO_CLIPBOARD
+
 UtilityMainWindow::UtilityMainWindow(QWidget* parent) {
     Settings settings;
     // Set language.

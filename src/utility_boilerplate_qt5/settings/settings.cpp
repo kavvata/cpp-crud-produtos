@@ -18,18 +18,18 @@ Settings::Settings() : QSettings(path(), QSettings::IniFormat) {
 }
 
 void Settings::createBasicSettings() {
-    auto* language = new ComboBoxItemWithData(
-        languageKey(), tr("Language"), availableLanguages(), systemLanguage());
-    addUserSetting(language);
+    // auto* language = new ComboBoxItemWithData(
+    //     languageKey(), tr("Language"), availableLanguages(), systemLanguage());
+    // addUserSetting(language);
     auto* theme = new ComboBoxItem(themeKey(),
                                    tr("Theme"),
                                    QStyleFactory::keys(),
                                    QApplication::style()->objectName(),
                                    tr("Application theme"));
     addUserSetting(theme);
-    auto* recentFilesLimit = new SpinboxItem(
-        recentFilesLimitKey(), tr("Recent files limit"), 0, 10, recentFilesDefault());
-    addUserSetting(recentFilesLimit);
+    // auto* recentFilesLimit = new SpinboxItem(
+    //     recentFilesLimitKey(), tr("Recent files limit"), 0, 10, recentFilesDefault());
+    // addUserSetting(recentFilesLimit);
 }
 
 void Settings::retranslateUi() {

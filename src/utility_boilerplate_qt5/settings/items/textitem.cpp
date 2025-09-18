@@ -2,9 +2,11 @@
 
 #include <debug_new>
 
-TextItem::TextItem(QString key, QString name, QString defaultValue, QString toolTip)
+TextItem::TextItem(QString key, QString name, QString defaultValue, bool isPassword,
+                   QString toolTip)
     : SimpleSettingItem<QLineEdit>(std::move(key), std::move(name), std::move(toolTip)),
-      _defaultValue{std::move(defaultValue)} {}
+      _defaultValue{std::move(defaultValue)},
+      _isPassword{isPassword} {}
 
 QWidget* TextItem::view(QWidget* parent) {
     if (_view) return _view;
@@ -16,6 +18,9 @@ QWidget* TextItem::view(QWidget* parent) {
     }
     if (_value != nullptr) {
         _field->setText(_value);
+    }
+    if (_isPassword) {
+        _field->setEchoMode(QLineEdit::Password);
     }
     layout->addWidget(createLabel());
     layout->addWidget(_field);

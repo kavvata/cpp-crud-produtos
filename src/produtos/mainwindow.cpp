@@ -8,7 +8,7 @@
 #include <debug_new>
 #include "listwidget.hpp"
 #include "produtoform.hpp"
-#include "texteditorsettings.hpp"
+#include "produtosettings.hpp"
 
 MainWindow::MainWindow(QWidget* parent) : UtilityMainWindow(parent) {
     // Set icon for that window.
@@ -122,7 +122,7 @@ void MainWindow::copy() { textEditor->copy(); }
  */
 void MainWindow::paste() { textEditor->paste(); }
 
-void MainWindow::showSettings() { SettingsDialog(new TextEditorSettings()).exec(); }
+void MainWindow::showSettings() { SettingsDialog(new ProdutoSettings()).exec(); }
 
 /**
  * How to add your actions to menus.
