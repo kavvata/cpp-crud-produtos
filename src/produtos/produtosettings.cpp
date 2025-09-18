@@ -1,8 +1,6 @@
 #include "produtosettings.hpp"
 
-#include "settings/items/checkboxitem.hpp"
 #include "settings/items/separatoritem.hpp"
-#include "settings/items/spinboxitem.hpp"
 #include "settings/items/textitem.hpp"
 
 ProdutoSettings::ProdutoSettings() {
