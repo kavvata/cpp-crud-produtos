@@ -37,3 +37,12 @@ A partir da pasta do código-fonte, execute:
 cmake -S. -Bbuild
 cmake --build build
 ```
+
+## Validação
+
+É possível autenticar no sistema com as credenciais:
+
+```shell
+Usuário: admin
+Senha: SuperSenha
+```
