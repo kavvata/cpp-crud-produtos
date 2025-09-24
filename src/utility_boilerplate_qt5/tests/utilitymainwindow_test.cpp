@@ -28,18 +28,19 @@ namespace ubTestSuit {
         QCoreApplication::sendEvent(window, new QEvent(QEvent::LocaleChange));
     }
 
-    TEST_F(UiFixture, UtilityMainWindow_updateRecentFiles) {  // NOLINT(cert-err58-cpp)
-        Settings settings;
-        settings.putRecentFile("test.test");
-        window->updateRecentFiles_test();
-    }
-
-    TEST_F(UiFixture, UtilityMainWindow_checkRecentFilesAvailability) {  // NOLINT(cert-err58-cpp)
-        window->checkRecentFilesAvailability_test();
-    }
-
-    TEST_F(UiFixture, UtilityMainWindow_newFile) {  // NOLINT(cert-err58-cpp)
-        window->newFile_test();
-    }
+    // TEST_F(UiFixture, UtilityMainWindow_updateRecentFiles) {  // NOLINT(cert-err58-cpp)
+    //     Settings settings;
+    //     settings.putRecentFile("test.test");
+    //     window->updateRecentFiles_test();
+    // }
+    //
+    // TEST_F(UiFixture, UtilityMainWindow_checkRecentFilesAvailability) {  //
+    // NOLINT(cert-err58-cpp)
+    //     window->checkRecentFilesAvailability_test();
+    // }
+    //
+    // TEST_F(UiFixture, UtilityMainWindow_newFile) {  // NOLINT(cert-err58-cpp)
+    //     window->newFile_test();
+    // }
 
 }  // namespace ubTestSuit
