@@ -1,7 +1,7 @@
 #include <gtest/gtest.h>
 
+#include "../mainwindow.hpp"
 #include "fixtures.hpp"
-#include "mainwindow.hpp"
 
 namespace appTestSuit {
 
