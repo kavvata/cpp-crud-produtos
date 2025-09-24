@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.14 FATAL_ERROR)
+cmake_minimum_required(VERSION 3.5 FATAL_ERROR)
 
 project(utility_boilerplate_qt_example VERSION 0.1)
 
@@ -76,7 +76,7 @@ if(CMAKE_BUILD_TYPE MATCHES Debug
    AND CMAKE_CXX_COMPILER_ID MATCHES "GNU|Clang"
 )
   include(CTest)
-  add_subdirectory(src/example/tests)
+  add_subdirectory(src/produtos/tests)
 
   target_compile_options(
         tests
